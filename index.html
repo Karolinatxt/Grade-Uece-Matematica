@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade Curricular - Matemática UECE</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; display: flex; background: #f2f2f2; color: #002856; }
+    aside {
+      width: 250px;
+      background: #002856;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      overflow-y: auto;
+    }
+    aside h2 { margin-bottom: 20px; font-size: 1.5em; }
+    aside ul { list-style: none; }
+    aside li { margin: 10px 0; }
+    aside a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    aside a:hover {
+      background: #004080;
+    }
+    main {
+      margin-left: 270px;
+      padding: 20px;
+      flex: 1;
+    }
+    .disciplina {
+      background: white;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-left: 5px solid #004080;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .disciplina h3 { margin-bottom: 5px; color: #004080; }
+    .disciplina p { margin: 3px 0; }
+  </style>
+</head>
+<body>
+  <aside>
+    <h2>Semestres</h2>
+    <ul>
+      <li><a href="#" data-sem="1">1º Semestre</a></li>
+      <li><a href="#" data-sem="2">2º Semestre</a></li>
+      <li><a href="#" data-sem="3">3º Semestre</a></li>
+      <li><a href="#" data-sem="4">4º Semestre</a></li>
+      <li><a href="#" data-sem="5">5º Semestre</a></li>
+      <li><a href="#" data-sem="6">6º Semestre</a></li>
+      <li><a href="#" data-sem="7">7º Semestre</a></li>
+      <li><a href="#" data-sem="8">8º Semestre</a></li>
+      <li><a href="#" data-sem="9">9º Semestre</a></li>
+      <li><a href="#" data-sem="99">Optativas</a></li>
+    </ul>
+  </aside>
+  <main>
+    <h1>Grade Curricular - Licenciatura em Matemática (UECE)</h1>
+    <div id="grade-container"></div>
+  </main>
+
+  <script>
+    const grade = {
+      1: [
+        {nome: "Conjuntos e Funções", creditos: 4},
+        {nome: "Escrita Matemática", creditos: 2},
+        {nome: "Fundamentos de Aritmética", creditos: 4},
+        {nome: "Geometria Plana", creditos: 6},
+        {nome: "Lógica", creditos: 4},
+      ],
+      2: [
+        {nome: "Cálculo Diferencial e Integral I", creditos: 6},
+        {nome: "Geometria Espacial", creditos: 4},
+        {nome: "Introdução à Computação", creditos: 4},
+        {nome: "Lab. de Ensino de Trigonometria", creditos: 2},
+        {nome: "Sistemas Lineares", creditos: 4},
+      ],
+      3: [
+        {nome: "Cálculo Diferencial e Integral II", creditos: 4},
+        {nome: "Didática Geral", creditos: 4},
+        {nome: "Geometria Analítica Vetorial", creditos: 4},
+        {nome: "Matemática Discreta", creditos: 4},
+        {nome: "Psicologia da Aprendizagem", creditos: 4},
+      ],
+      4: [
+        {nome: "Álgebra Linear", creditos: 4},
+        {nome: "Cálculo Diferencial e Integral III", creditos: 4},
+        {nome: "Didática da Matemática", creditos: 4},
+        {nome: "Lab. de Ensino de Geometria", creditos: 2},
+        {nome: "Política e Organização da Educação Básica", creditos: 2},
+        {nome: "Probabilidade", creditos: 4},
+      ],
+      5: [
+        {nome: "Equações Diferenciais Ordinárias", creditos: 6},
+        {nome: "Estatística", creditos: 4},
+        {nome: "História da Matemática", creditos: 4},
+        {nome: "Introdução à Teoria dos Números", creditos: 4},
+        {nome: "Prática de Ensino de Matemática I", creditos: 2},
+      ],
+      6: [
+        {nome: "Cálculo Numérico", creditos: 4},
+        {nome: "Estágio Supervisionado - Ensino Fundamental I", creditos: 6},
+        {nome: "Estruturas Algébricas I", creditos: 4},
+        {nome: "Física Básica", creditos: 6},
+      ],
+      7: [
+        {nome: "Análise Matemática", creditos: 6},
+        {nome: "Estágio Supervisionado - Ensino Fundamental II", creditos: 6},
+        {nome: "Lab. de Ensino de Aritmética", creditos: 2},
+        {nome: "Prática de Ensino de Matemática II", creditos: 2},
+      ],
+      8: [
+        {nome: "Estágio Supervisionado - Ensino Médio I", creditos: 6},
+        {nome: "Lab. de Ensino de Álgebra", creditos: 2},
+        {nome: "Projeto de TCC", creditos: 2},
+        {nome: "Resolução de Problemas", creditos: 4},
+        {nome: "Temas de Matemática e Ensino", creditos: 2},
+      ],
+      9: [
+        {nome: "Estágio Supervisionado - Ensino Médio II", creditos: 6},
+        {nome: "Língua Brasileira de Sinais", creditos: 4},
+        {nome: "Tecnologias Digitais no Ensino da Matemática", creditos: 2},
+        {nome: "Trabalho de Conclusão de Curso", creditos: 2},
+      ],
+      99: [
+        {nome: "Álgebra Linear Aplicada", creditos: 6},
+        {nome: "Atividades Acadêmicas, Científicas e Culturais", creditos: 12},
+        {nome: "Cálculo Diferencial e Integral IV", creditos: 4},
+        {nome: "Espaços Métricos", creditos: 4},
+        {nome: "Estruturas Algébricas II", creditos: 4},
+        {nome: "Fund. Epistemológicos de Matemática", creditos: 4},
+        {nome: "Fund. de Análise de Dados", creditos: 4},
+        {nome: "Geometria Diferencial", creditos: 6},
+        {nome: "História da Educação Matemática", creditos: 4},
+        {nome: "Matemática e Tecnologia I", creditos: 4},
+        {nome: "Matemática Financeira", creditos: 4},
+        {nome: "Otimização I", creditos: 4},
+        {nome: "Tendências em Educação Matemática", creditos: 6},
+        {nome: "Variáveis Complexas", creditos: 4},
+      ]
+    };
+
+    const container = document.getElementById("grade-container");
+    document.querySelectorAll("aside a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const sem = e.target.dataset.sem;
+        const disciplinas = grade[sem] || [];
+        container.innerHTML = disciplinas.map(d => `
+          <div class="disciplina">
+            <h3>${d.nome}</h3>
+            <p><strong>Créditos:</strong> ${d.creditos}</p>
+          </div>
+        `).join("");
+      });
+    });
+  </script>
+</body>
+</html>
